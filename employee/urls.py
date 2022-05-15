@@ -19,14 +19,14 @@ urlpatterns = [
     path('list_dep_old/', list_dep_old),
     path('del_dep_old/<int:dep_id>/', del_dep_old),
     path('edit_dep_old/<int:dep_id>/', edit_dep_old),
-    # # 操作团体数据表（group）相关URL配置项
+    # 操作团体数据表（group）相关URL配置项
     path('add_group_old/', add_group_old),
     path('list_group_old/', list_group_old),
-    # path('del_group_old/<int:group_id>/', del_group_old),
-    # path('edit_group_old/<int:group_id>/', edit_group_old),
-    # # 操作员工补充信息数据表（employeeinfo）相关URL配置项
-    # path('add_employeeinfo_old/', add_employeeinfo_old),
-    # path('list_employeeinfo_old/', list_employeeinfo_old),
-    # path('del_employeeinfo_old/<int:info_id>/', del_employeeinfo_old),
-    # path('edit_employeeinfo_old/<int:info_id>/', edit_employeeinfo_old),
+    path('del_group_old/<int:group_id>/', del_group_old),
+    path('edit_group_old/<int:group_id>/', edit_group_old),
+    # 操作员工补充信息数据表（employeeinfo）相关URL配置项
+    path('add_employeeinfo_old/', add_employeeinfo_old),
+    path('list_employeeinfo_old/', list_employeeinfo_old),
+    path('del_employeeinfo_old/<int:info_id>/', del_employeeinfo_old),
+    path('edit_employeeinfo_old/<int:info_id>/', edit_employeeinfo_old),
 ]
