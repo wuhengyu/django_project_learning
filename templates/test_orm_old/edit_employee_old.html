@@ -28,7 +28,7 @@
                 {% for info in info_list %}
                     {#  <!-- emp.info_id与info.id相同，说明员工一对一键字段值与员工补充信息记录主键值相同，设置<option>标签为selected　//-- >#}
                     {% if emp.info_id == info.id %}
-                        <option value="{{ info.id }}" 　selected> {{ info.phone }}||{{ info.address }}</option>
+                        <option value="{{ info.id }}"> {{ info.phone }}||{{ info.address }}</option>
                     {% else %}
                         <option value="{{ info.id }}"> {{ info.phone }}||{{ info.address }}</option>
                     {% endif %}
@@ -41,9 +41,9 @@
             <select name="dep" id="dep">
                 {% for dep in dep_list %}
                     {% if emp.dep_id == dep.id %}
-                        <option value="{{ dep.id }}" 　selected> {{ dep.dep_name }}</option>
+                        <option value="{{ dep.id }}"> {{ dep.dep_name }}</option>
                     {% else %}
-                        <option value="{{ dep.id }}" 　> {{ dep.dep_name }}</option>
+                        <option value="{{ dep.id }}"> {{ dep.dep_name }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
@@ -52,11 +52,11 @@
         <div>
             <label>团体：</label>
             {#  <!-- 字段group是多对多键，设置<select>标签属性multiple="true" //-- >#}
-            <select name="group" id="group" 　 multiple="true">
+            <select name="group" id="group" multiple="true">
                 {% for group　in group_list %}
                     {#  <!-- 如果团体group记录对象在employee当前记录多对多键关联团体记录对象的集合中，设置当前<option>标签为selected　//-- >#}
                     {% if group in emp.group.all %}
-                        <option value="{{ group.id }}" selected> {{ group.group_name }}</option>
+                        <option value="{{ group.id }}"> {{ group.group_name }}</option>
                     {% else %}
                         <option value="{{ group.id }}"> {{ group.group_name }}</option>
                     {% endif %}

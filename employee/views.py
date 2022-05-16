@@ -161,6 +161,7 @@ def edit_employeeinfo_old(request, info_id):
         id = request.POST.get('id')
         phone = request.POST.get('phone')
         address = request.POST.get('address')
+
         info_object = employeeinfo.objects.get(id=id)
         info_object.phone = phone
         info_object.address = address
@@ -217,6 +218,7 @@ def edit_employee_old(request, emp_id):
         dep = request.POST.get("dep")
         info = request.POST.get("info")
         groups = request.POST.getlist("group")
+
         emp = employee.objects.get(id=id)
         emp.name = name
         emp.email = email
