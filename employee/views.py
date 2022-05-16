@@ -176,6 +176,8 @@ def edit_employeeinfo_old(request, info_id):
 def list_employee_old(request):
     # 取出employee数据表中全部记录
     emp = employee.objects.all()
+    # 它是一个Django QuerySet对象集
+    # 外键dep、多对多键group、一对一键info这些关联关系也包含在emp对象中，因为Django ORM会自动把关联关系也放在Query Set对象中
     return render(request, 'test_orm_old/list_employee_old.html', {'emp_list': emp})
 
 
@@ -200,6 +202,7 @@ def add_employee_old(request):
         new_emp = employee.objects.create(name=name, email=email,
                                           salary=salary, dep_id=dep, info_id=info)
         # 给多对多键字段赋值
+        # 多对多键group涉及多个值，因些在生成一条记录new_emp后，需通过new_emp.group.set(groups)进行赋值
         new_emp.group.set(groups)
         return redirect('/test_orm_old/list_employee_old/')
     dep_list = department.objects.all()

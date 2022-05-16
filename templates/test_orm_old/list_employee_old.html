@@ -36,6 +36,7 @@
                 <td>{{ emp.dep.dep_name }}</td>
                 <td>
                     {#      <!-- 多对多关系取值方式，通过emp.group.all取得本记录关联的group对象//-- >#}
+{#                通过group这个多对多键可以取得group数据表中相关联的记录，由于是多对多关系，这些关联记录不只一条#}
                     {% for gp in emp.group.all %}
                         {% if forloop.last %}
                             {{ gp.group_name }}
