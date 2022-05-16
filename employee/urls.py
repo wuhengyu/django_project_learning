@@ -10,10 +10,10 @@ from employee.views import *
 
 urlpatterns = [
     # 操作员工数据表（employee）相关URL配置项
-    # path('list_employee_old/', list_employee_old),
-    # path('add_employee_old/', add_employee_old),
-    # path('edit_employee_old/<int:emp_id>/', edit_employee_old),
-    # path('del_employee_old/<int:emp_id>/', delete_employee_old),
+    path('list_employee_old/', list_employee_old),
+    path('add_employee_old/', add_employee_old),
+    path('edit_employee_old/<int:emp_id>/', edit_employee_old),
+    path('del_employee_old/<int:emp_id>/', delete_employee_old),
     # 操作部门数据表（department）相关URL配置项
     path('add_dep_old/', add_dep_old),
     path('list_dep_old/', list_dep_old),

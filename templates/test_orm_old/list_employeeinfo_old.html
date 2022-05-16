@@ -12,6 +12,7 @@
     <table border="1">
         <thead>
         <tr>
+            <td>员工联系信息id</td>
             <td>电话号码</td>
             <td>家庭住址</td>
             <td colspan="2">操作</td>
@@ -20,6 +21,7 @@
         <tbody>
         {% for info in info_list %}
             <tr>
+                <td>{{ info.id }}</td>
                 <td>{{ info.phone }}</td>
                 <td>{{ info.address }}</td>
                 <td><a href="/test_orm_old/del_employeeinfo_old/{{ info.id }}/">删除</a></td>

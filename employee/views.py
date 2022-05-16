@@ -148,9 +148,11 @@ def add_employeeinfo_old(request):
 
 # 删除一条员工补充信息记录
 def del_employeeinfo_old(request, info_id):
-    info_object = employeeinfo.objects.get(id=info_id)
-    info_object.delete()
-    return redirect('/test_orm_old/list_employeeinfo_old/')
+    if request.method == 'POST':
+        info_object = employeeinfo.objects.get(id=info_id)
+        info_object.delete()
+        return redirect('/test_orm_old/list_employeeinfo_old/')
+    return render(request, 'test_orm_old/delete_employeeinfo_old.html')
 
 
 # 修改一条员工补充信息记录
@@ -167,3 +169,65 @@ def edit_employeeinfo_old(request, info_id):
     else:
         info_object = employeeinfo.objects.get(id=info_id)
     return render(request, 'test_orm_old/edit_employeeinfo_old.html', {'info': info_object})
+
+
+# views.py第七段代码
+def list_employee_old(request):
+    # 取出employee数据表中全部记录
+    emp = employee.objects.all()
+    return render(request, 'test_orm_old/list_employee_old.html', {'emp_list': emp})
+
+
+def delete_employee_old(request, emp_id):
+    # 取出主键值等于emp_id的记录对象
+    emp = employee.objects.get(id=emp_id)
+    # 删除记录对象
+    emp.delete()
+    return redirect('/test_orm_old/list_employee_old')
+
+
+# views.py第八段代码
+def add_employee_old(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        dep = request.POST.get("dep")
+        info = request.POST.get("info")
+        salary = request.POST.get("salary")
+        # 取得多个值
+        groups = request.POST.getlist("group")
+        new_emp = employee.objects.create(name=name, email=email,
+                                          salary=salary, dep_id=dep, info_id=info)
+        # 给多对多键字段赋值
+        new_emp.group.set(groups)
+        return redirect('/test_orm_old/list_employee_old/')
+    dep_list = department.objects.all()
+    group_list = group.objects.all()
+    info_list = employeeinfo.objects.all()
+    return render(request, 'test_orm_old/add_employee_old.html',
+                  {'dep_list': dep_list, 'group_list': group_list, 'info_list': info_list})
+
+
+# views.py第九段代码
+def edit_employee_old(request, emp_id):
+    if request.method == "POST":
+        id = request.POST.get('id')
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        dep = request.POST.get("dep")
+        info = request.POST.get("info")
+        groups = request.POST.getlist("group")
+        emp = employee.objects.get(id=id)
+        emp.name = name
+        emp.email = email
+        emp.dep_id = dep
+        emp.info_id = info
+        emp.group.set(groups)
+        emp.save()
+        return redirect('/test_orm_old/list_employee_old/')
+    emp = employee.objects.get(id=emp_id)
+    dep_list = department.objects.all()
+    group_list = group.objects.all()
+    info_list = employeeinfo.objects.all()
+    return render(request, 'test_orm_old/edit_employee_old.html',
+                  {'emp': emp, 'dep_list': dep_list, 'group_list': group_list, 'info_list': info_list})
