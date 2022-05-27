@@ -29,4 +29,19 @@ urlpatterns = [
     path('list_employeeinfo_old/', list_employeeinfo_old),
     path('del_employeeinfo_old/<int:info_id>/', del_employeeinfo_old),
     path('edit_employeeinfo_old/<int:info_id>/', edit_employeeinfo_old),
+
+    # 正向操作和反向操作
+    path('test_foreign/', test_foreign),
+    path('test_foreign2/', test_foreign2),
+    path('test_foreign3/', test_foreign3),
+
+    # 多对多键跨表关联操作
+    path('test_create/', test_create),
+    path('test_add/', test_add),
+    path('test_set/', test_set),
+    path('test_remove/', test_remove),
+    path('test_clear/', test_clear),
+
+    path('test_values_list/', test_values_list),
+    path('test_value/', test_value),
 ]

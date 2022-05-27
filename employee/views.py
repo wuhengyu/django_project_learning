@@ -215,19 +215,21 @@ def add_employee_old(request):
 # views.py第九段代码
 def edit_employee_old(request, emp_id):
     if request.method == "POST":
+        # 取值
         id = request.POST.get('id')
         name = request.POST.get("name")
         email = request.POST.get("email")
         dep = request.POST.get("dep")
         info = request.POST.get("info")
         groups = request.POST.getlist("group")
-
+        # 设值
         emp = employee.objects.get(id=id)
         emp.name = name
         emp.email = email
         emp.dep_id = dep
         emp.info_id = info
         emp.group.set(groups)
+        # 执行
         emp.save()
         return redirect('/test_orm_old/list_employee_old/')
     emp = employee.objects.get(id=emp_id)
@@ -236,3 +238,84 @@ def edit_employee_old(request, emp_id):
     info_list = employeeinfo.objects.all()
     return render(request, 'test_orm_old/edit_employee_old.html',
                   {'emp': emp, 'dep_list': dep_list, 'group_list': group_list, 'info_list': info_list})
+
+
+# 正向和反向查找
+def test_foreign(request):
+    # 取出employee的一条记录
+    emp = employee.objects.get(id=28)
+    # 正向操作，通过外键值dep关联到department数据表的一条记录，然后取得该记录的dep_name字段
+    dep_name = emp.dep.dep_name
+    dep_obj = department.objects.get(id=6)
+    # 反向操作，通过employee_set关联到employee数据表，然后用all()函数取得其全部记录
+    emp_list = dep_obj.employee_set.all()
+    emp_names = [emp.name for emp in emp_list]
+    return HttpResponse("1.正向关联 <br> 员工名称:{0} <br> 所在部门名称:{1} <br> 2.反向查找 <br> 部门名称:{2} <br>部门员工:{3}".
+                        format(emp.name, dep_name, dep_obj.dep_name, emp_names))
+
+
+# 正向操作查询字段值，取得字段值的形式为“外键+双下划线+关联表的字段名
+def test_foreign2(request):
+    emp1_tuple = employee.objects.values_list('name', "dep__dep_name", "dep__dep_script")
+    print(emp1_tuple)
+    emp2_list = employee.objects.values('name', "dep__dep_name", "dep__dep_script")
+    print(emp2_list)
+    return HttpResponse("emp:{0}<br>emp2:<br>{1}".format(emp1_tuple, emp2_list))
+
+
+# 反向操作查询字段值，取得字段值的形式为“表名+双下划线+字段名”，表名是有外键字段的表的名称
+def test_foreign3(request):
+    dep_emp = department.objects.values_list("employee__name")
+    print(dep_emp)
+    return HttpResponse("emp:{0}".format(dep_emp))
+
+
+# 多对多键跨表关联操作create()函数
+def test_create(request):
+    # 反向操作
+    group.objects.first().employee_set.create(name='ww', email='578060214@qq.com', dep_id='1', salary='8')
+    # 或者
+    # group.objects.get(id=2).employee_set.create(name='ww', email='578060214@qq.com', dep_id='1', salary='8')
+
+    # 正向操作
+    employee.objects.first().group.create(group_name='搏击', group_script='搏击也是健身项目')
+
+
+# 多对多键跨表关联操作add()函数
+def test_add(request):
+    group_list = group.objects.filter(id__lt=6)
+    # employee.objects.first().group.add(*group_list)
+    # 或
+    employee.objects.get(id=31).group.add(*group_list)
+    # 或
+    # employee.objects.first().group.add(*[1, 2, 6])
+
+
+# 多对多键跨表关联操作set()函数
+def test_set(request):
+    # 不管该记录以前关联任何记录，用新的关联替换
+    employee.objects.get(id=50).group.set([4, 5, 6])
+    # 或
+    # employee.objects.first().group.set([4, 5, 6])
+
+# 多对多键跨表关联操作remove()函数
+def test_remove(request):
+    # 从employee数据表中取出第一条记录，然后删除这条记录关联的group数据表中id值为4的记录
+    obj_list = employee.objects.all().first()
+    obj_list.group.remove(4)
+
+# 多对多键跨表关联操作clear()函数
+def test_clear(request):
+    # 从记录对象中删去一切关联记录。以下代码将删去employee数据表中第一条或最后一条记录与group数据表中关联的一切记录
+    employee.objects.first().group.clear()
+    # employee.objects.last().group.clear()
+
+# 多对多关联跨表正向操作查询字段值
+def test_values_list(request):
+    emp_m2m_1 = employee.objects.values_list("id", "name", "group__group_name")
+    print(emp_m2m_1)
+
+# 多对多关联跨表反向操作查询字段值
+def test_value(request):
+    emp_m2m_2 = group.objects.values("group_name", "employee__name", "employee__email")
+    print(emp_m2m_2)
