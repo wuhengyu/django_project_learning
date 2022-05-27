@@ -12,6 +12,7 @@ class employee(models.Model):
     # 本表中与这条记录有关联的记录将全被删掉
     dep = models.ForeignKey(to="department", on_delete=models.CASCADE)
     # 员工加入的团体，多对多关系，即一个员工可以加入多个团体，一个团体有多个员工
+    # 单独一张表
     group = models.ManyToManyField(to="group")
     # 薪水，数值类型
     salary = models.DecimalField(max_digits=8, decimal_places=2)
