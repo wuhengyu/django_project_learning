@@ -118,7 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# 静态文件目录
+# # 静态文件目录
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 
 # Default primary key field type
@@ -127,6 +127,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # # 访问上传资源media路径
-# MEDIA_URL = "/test_view_media/"
+# MEDIA_URL = "/test_view2_pic/"
 # # # 存储上传资源的路径
-# MEDIA_ROOT = os.path.join(BASE_DIR, "static/test_view_media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "/static/test_view2_pic")

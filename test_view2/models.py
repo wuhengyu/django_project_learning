@@ -18,5 +18,5 @@ class person(models.Model):
     gender = models.CharField(max_length=1, choices=(("1", "男"), ("2", "女"),), verbose_name='性别')
     # 头像，upload_to指定图片上传的途径，如果不存在则自动创建
     head_img = models.ImageField(upload_to='headimage', blank=True, null=True, verbose_name='头像')
-    # 附件，文件类型字段
+    # 附件，文件类型字段, 存储在/static/test_view2_pic/ + filedir/文件夹中
     attachment = models.FileField(upload_to='filedir', blank=True, null=True, verbose_name='附件')
