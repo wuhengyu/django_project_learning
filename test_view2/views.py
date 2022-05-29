@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from test_view2.models import loguser
+from test_view2.models import loguser, person
 
 
 # Create your views here.
@@ -25,3 +25,8 @@ def login(request):
     # 第二个参数是空字符，表示如果取不到值，就返回一个空字符给account
     account = request.COOKIES.get('account', '')
     return render(request, 'test_view2/login.html', {'account_two': account})
+
+
+def index(request):
+    person_list = person.objects.all()
+    return render(request, 'test_view2/index.html', {'person_list': person_list})
