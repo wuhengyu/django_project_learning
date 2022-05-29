@@ -8,28 +8,30 @@
 <div align="center">
     <h2>登录页面</h2>
     <hr>
-    <form method='post' action='/test_view/login/'>
+    <form method='post' action='/test_view2/login/'>
         {% csrf_token %}
-        <div style="margin-top:6px;margin-bottom:6px;">
-            <label for="">用户名：</label>
-            <!--#这个模板变量名为account_two，因为render()传入的变量名也是account_two // -->
-            <input type="text" name="account" value="{{ account_two }}">
+        <div>
+            <div style="margin-top:60px;margin-bottom:6px;">
+                <label for="">用户名：</label>
+                <!--#这个模板变量名为account_two，因为render()传入的变量名也是account_two // -->
+                <input type="text" name="account" value="{{ account_two }}">
             </div>
-            <div style="margin-top:6px;margin-bottom:6px;">
-            <label for="">密码：</label>
-            <!-- 设置type="password"，使输入字符不可见 -->
-            <input type="password" name="password">
+            <div>
+                <label for="">密码：</label>
+                <!-- 设置type="password"，使输入字符不可见 -->
+                <input type="password" name="password">
+            </div>
         </div>
-        <div style="margin-top:6px;margin-bottom:6px;">
+        <div style="margin-top:6px">
             <input type="checkbox" name="remember">记住登录用户名
         </div>
         <div style="color:red;">
             {{ errmsg }}
         </div>
-        <div style="margin-top:6px;margin-bottom:6px;">
+        <div style="margin-top:20px">
             <input type="submit" value="登录">
         </div>
     </form>
-    <div>
+<div>
 </body>
 </html>
