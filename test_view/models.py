@@ -27,11 +27,11 @@ class person(models.Model):
     # 部门备注说明
     email = models.EmailField(verbose_name='邮箱')
     gender = models.IntegerField(verbose_name='性别')
-    head_img = models.ImageField(upload_to='test/')
+    head_img = models.ImageField(upload_to='test_view_pic')
 
 
 class loguser(models.Model):
     # 部门名称，为字符类型
-    acount = models.CharField(max_length=32, verbose_name='用户名', blank=False)
+    account = models.CharField(max_length=32, verbose_name='用户名', blank=False)
     # 部门备注说明
     password = models.CharField(max_length=32, verbose_name='密码')

@@ -7,6 +7,7 @@
 <body>
 <div align="center">
     <h2>当前登录人员：{{ loguser.account }}</h2>
+    <h2>当前登录密码：{{ loguser.password }}</h2>
     <hr>
     <table cellspacing=16px>
         <thead>
@@ -21,11 +22,12 @@
             <!-- for循环块中，依次取出每条记录　-->
             {% for person in person_list %}
         <tr>
-            <td><img src="/test/{{ person.head_img }}" style="height:60px;width:60px;"></td>
+            <td><img src="/static/test_view_pic/{{ person.head_img }}.jpeg" style="height:60px;width:60px;" alt="图片"></td>
             <td>{{ person.name }}</td>
             <td>{{ person.email }}</td>
             <!-- 取得性别的显示值 -->
-            <td>{{ person.get_gender_display }}</td>
+{#            <td>{{ person.get_gender_display }}</td>#}
+            <td>{{ person.gender }}</td>
         </tr>
         {% empty %}
             <tr>
