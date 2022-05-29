@@ -30,3 +30,24 @@ def login(request):
 def index(request):
     person_list = person.objects.all()
     return render(request, 'test_view2/index.html', {'person_list': person_list})
+
+
+def add_person(request):
+    if request.method=="POST":
+        # 取得姓名
+        name=request.POST.get("name")
+        # 取得邮箱地址
+        email=request.POST.get("email")
+        # 取得性别值
+        gender=request.POST.get("gender")
+        # 图片文件从request.FILES中取值
+        head_img=request.FILES.get('head_img')
+        # 文件类型从request.FILES中取值
+        attachment=request.FILES.get('attachment')
+        # print(attachment)
+        # 生成一条记录
+        new_person=person.objects.create(name=name,email=email,
+        gender=gender,head_img=head_img,attachment=attachment)
+        # 重定向
+        return redirect('/test_view2/index/')
+    return render(request,'test_view2/add_person.html')

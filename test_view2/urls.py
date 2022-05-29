@@ -8,9 +8,9 @@ from django.urls import path
 from test_view2.views import *
 urlpatterns = [
     # # 登录
-    # path('login/', login),
+    path('login/', login),
     # # 主页，人员列表
-    # path('index/', index),
+    path('index/', index),
     # # 增加人员
     # path('add_person/', add_person),
     # # 删除人员
