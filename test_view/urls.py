@@ -21,6 +21,6 @@ urlpatterns = [
 
     # 通用视图
     path('test_templateview/', test_templateview.as_view()),
-    path('listviewdemo/',test_listview.as_view()),
+    path('listviewdemo/',listviewdemo.as_view()),
 
 ]

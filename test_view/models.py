@@ -19,3 +19,19 @@ class department(models.Model):
         # 反向解析URL，解析成/dep/self.pk/
         # reverse()函数得到URL后去urls.py文件中找匹配关系,找到对应视图函数为depdetail()并执行
         return reverse('depdetail', kwargs={'dep_id': self.pk})
+
+
+class person(models.Model):
+    # 部门名称，为字符类型
+    name = models.CharField(max_length=32, verbose_name='部门名称', blank=False)
+    # 部门备注说明
+    email = models.EmailField(verbose_name='邮箱')
+    gender = models.IntegerField(verbose_name='性别')
+    head_img = models.ImageField(upload_to='test/')
+
+
+class loguser(models.Model):
+    # 部门名称，为字符类型
+    acount = models.CharField(max_length=32, verbose_name='用户名', blank=False)
+    # 部门备注说明
+    password = models.CharField(max_length=32, verbose_name='密码')

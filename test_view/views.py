@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import datetime
 
-from test_view.models import department
+from test_view.models import department, person, loguser
 
 
 def hello_view(request):
@@ -90,10 +90,12 @@ class test_templateview(TemplateView):
 
 
 from django.views.generic import ListView
+
+
 # 视图继承于List View
 class test_listview(ListView):
     # 设置数据模型, 相等于dep_list = models.department.objects.all()
-    model=department
+    model = department
     # 设置模板文件
     template_name = "test_view/test_listview.html"
     # 设置模板变量
@@ -101,17 +103,21 @@ class test_listview(ListView):
 
 
 from django.views.generic import ListView
+
+
 class listviewdemo(ListView):
     # 设置模板文件
     template_name = "test_view/listviewdemo.html"
     # 设置模板变量
     context_object_name = "person_list"
+
     # 重写get_queryset()，取person中性别为女的人员，gender值为'2'
     def get_queryset(self):
         # 按照gender=’2’过滤数据
-        personlist =person.objects.filter(gender='2')
+        personlist = person.objects.filter(gender='2')
         return personlist
-        # 重写父类的get_context_data()，增加模板变量loguser
-        def get_context_data(self, **kwargs):
-        kwargs['loguser'] = models.loguser.objects.all().first()
+
+    # 重写父类的get_context_data()，增加模板变量loguser
+    def get_context_data(self, **kwargs):
+        kwargs['loguser'] = loguser.objects.all().first()
         return super(listviewdemo, self).get_context_data(**kwargs)
