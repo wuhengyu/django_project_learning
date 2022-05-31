@@ -78,7 +78,14 @@ def edit_person(request, personid):
         if attachment:
             # 上传附件有值时才修改数据字段的值
             person_obj.attachment = attachment
-            person_obj.save()
+        person_obj.save()
         return redirect('/test_view2/index/')
-        person_obj = person.objects.get(id=personid)
+    person_obj = person.objects.get(id=personid)
     return render(request, 'test_view2/edit_person.html', {'person': person_obj})
+
+
+def del_person(request,personid):
+    person_obj=person.objects.get(id=personid)
+    # 删除记录对象
+    person_obj.delete()
+    return redirect('/test_view2/index/')

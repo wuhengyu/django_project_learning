@@ -15,20 +15,22 @@
         {% csrf_token %}
         <div>
             <label>姓名：</label>
-            <input type="text" name="name" id="name">
+            <label for="name"></label><input type="text" name="name" id="name">
         </div>
         <br>
         <div>
             <label>邮箱：</label>
-            <input type="text" name="email" id="email">
+            <label for="email"></label><input type="text" name="email" id="email">
         </div>
         <br>
         <div>
             <label>性别：</label>
-            <select name="gender">
-                <option value="1">男</option>
-                <option value="2">女</option>
-            </select>
+            <label>
+                <select name="gender">
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </label>
         </div>
         <br>
         <div>

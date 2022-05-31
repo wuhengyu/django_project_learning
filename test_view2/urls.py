@@ -4,6 +4,8 @@
 # @File    : urls.py
 # @License : (C)Copyright Walter
 # @Desc    :
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from test_view2.views import *
 urlpatterns = [
@@ -14,7 +16,8 @@ urlpatterns = [
     # # 增加人员
     path('add_person/', add_person),
     # # 删除人员
-    # path('del_person/<int:personid>/', del_person),
+    path('del_person/<int:personid>/', del_person),
     # # 修改人员
-    # path('edit_person/<int:personid>/', edit_person),
+    path('edit_person/<int:personid>/', edit_person),
 ]
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,25 +14,27 @@
         <input type="hidden" value="{{ person.id }}" name="id">
         <div>
             <label>姓名：</label>
-            <input type="text" name="name" id="name" value="{{ person.name }}">
+            <label for="name"></label><input type="text" name="name" id="name" value="{{ person.name }}">
         </div>
         <br>
         <div>
             <label>邮箱：</label>
-            <input type="text" name="email" id="email" value="{{ person. email }}">
+            <label for="email"></label><input type="text" name="email" id="email" value="{{ person.email }}">
         </div>
         <br>
         <div>
             <label>性别：</label>
-            <select name="gender">
-                <option value="1" {% if person.gender == "1" %} selected{% endif %}>男</option>
-                <option value="2" {% if person.gender == "2" %} selected{% endif %}>女</option>
-            </select>
+            <label>
+                <select name="gender">
+                    <option value="1" {% if person.gender == "1" %} selected{% endif %}>男</option>
+                    <option value="2" {% if person.gender == "2" %} selected{% endif %}>女</option>
+                </select>
+            </label>
         </div>
         <br>
         <div>
-            <label for="head_img">头像：<img id='imgforshow' src="/media/{{ person.head_img }}"
-                                          style="height:60px;width:60px;"></label>
+            <label for="head_img">头像：<img id='imgforshow' src="/static/media/{{ person.head_img }}"
+                                          style="height:60px;width:60px;" alt="图片"></label>
             <input type="file" name="head_img" id="head_img" style="display:none;">
         </div>
         <br>
@@ -44,18 +47,14 @@
         <div><input type="submit" value="保存"></div>
     </form>
 </div>
-<script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
 <script>
     $("#head_img").change(function () {
 // 创建一个读取头像文件的对象
-        var rd_img = new File
-        Reader();
+        var rd_img = new FileReader();
 // console.log(this.files[0]);
 // 读取选中的那个文件
-        rd_img.read
-        As
-        Data
-        URL(this.files[0]);
+        rd_img.readAsDataURL(this.files[0]);
 // 读取文件要耗费一定的时间,用onload确定文件读取完成后才把图片加载到<img>标签中
         rd_img.onload = function () {
             $("#imgforshow").attr("src", rd_img.result);

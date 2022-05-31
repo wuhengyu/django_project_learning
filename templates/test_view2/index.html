@@ -25,12 +25,12 @@
         <!--　 for循环代码块 //-->
         {% for person in person_list %}
             <tr>
-                <td><img src="/static/test_view2_pic/{{ person.head_img }}.jpeg" style="height:60px;width:60px;" alt="图片"></td>
+                <td><img src="/static/media/{{ person.head_img }}" style="height:60px;width:60px;" alt="图片"></td>
                 <td>{{ person.name }}</td>
                 <td>{{ person.email }}</td>
                 <!-- # 取得性别的显示值//-->
                 <td>{{ person.get_gender_display }}</td>
-                <td><a href="/static/test_view2_pic/{{ person.attachment }}">查看附件内容</a></td>
+                <td><a href="/static/media/{{ person.attachment }}">查看附件内容</a></td>
                 <td><a href="/test_view2/del_person/{{ person.id }}/">删除</a></td>
                 <td><a href="/test_view2/edit_person/{{ person.id }}/">修改</a></td>
             </tr>

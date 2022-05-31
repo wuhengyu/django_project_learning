@@ -126,7 +126,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# # 访问上传资源media路径
-# MEDIA_URL = "/test_view2_pic/"
-# # # 存储上传资源的路径
-MEDIA_ROOT = os.path.join(BASE_DIR, "/static/test_view2_pic")
+# 访问上传资源media路径
+# MEDIA_URL = "/media/"
+# 存储上传资源的路径
+MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
