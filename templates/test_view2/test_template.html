@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 列表类型变量 -->
+{{ v_list }} <br>
+<!-- 列表类型变量，提取第一个列表项 -->
+{{ v_list.0 }} <br>
+<!-- 字典类型变量，提取键名为name的键值 -->
+{{ v_dic.name }} <br>
+<!-- 字典类型变量，提取键名为love的键值 -->
+{{ v_dic.love }} <br>
+<!-- 列表类型，提取第二个列表项，这个项是类的实例对象，再提取它的name属性值 -->
+{{ coders.1.name }} <br>
+<!-- 列表类型，提取第二个列表项，这个项是类的实例对象，再提取它的language属性值 -->
+{{ coders.1.language }} <br>
+<!-- 列表类型，提取第二个列表项，这个项是类的实例对象，再提取它的hope()方法返回值 -->
+{{ coders.1.hope }} <br>
+
+</body>
+</html>

@@ -19,5 +19,13 @@ urlpatterns = [
     path('del_person/<int:personid>/', del_person),
     # # 修改人员
     path('edit_person/<int:personid>/', edit_person),
+
+    # 模版变量
+    path('template_test/', template_test),
+    path('test_filter/', test_filter),
+    path('test_for/', test_for),
+
+
+
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

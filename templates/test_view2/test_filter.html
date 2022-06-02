@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 要想使用自定义过滤器，应先把定义自定义过滤器的文件导入-->
+{% load test_filter %}
+<!-- 模板变量是hair，过滤器是coderstatus，参数是"王老五" -->
+<!-- 将显示：王老五是资深程序员 -->
+<h1>{{ hair|coderstatus:"王老五" }}</h1>
+
+{% if num > 8 %}
+    <h1>num数值大于8</h1>
+{% elif num < 8 %}
+    <h1>num数值小于8</h1>
+{% else %}
+    <h1>num肯定等于8</h1>
+{% endif %}
+
+<!-- django4.0该标签已被删除 -->
+<!-- 比较age是否等于80 -->
+{#{% ifequal age 80 %}#}
+{#    <h3>比较age是否等于80</h3>#}
+{#{% endifequal %}#}
+
+{% if age == 80 %}
+    <h1>比较age是否等于80</h1>
+{% endif %}
+
+{% for user in user_list %}
+    <h1>{{ user.name }}</h1>
+{% empty %}
+    <h1>判断列表为空</h1>
+{% endfor %}
+
+</body>
+</html>

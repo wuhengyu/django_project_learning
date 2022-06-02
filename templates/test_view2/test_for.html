@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for name in vlist %}
+    <!--　判断循环的第一条记录-->
+    {% if forloop.first %}
+    第一条记录：{{ name }}
+    <hr>
+    {% endif %}
+    <!--　forloop.counter 用法例子-->
+    从1开始计数：{{ forloop.counter }}--{{ name }}
+    <br>
+    <!-- forloop.counter0用法例子-->
+    从0开始计数:{{ forloop.counter0 }}--{{ name }}
+    <br>
+    <!-- forloop. revcounter 用法例子-->
+    反向计数：{{ forloop.revcounter }}--{{ name }}
+    <!—-显示分隔线-->
+    <hr>
+    <!--#判断循环的最后一条记录-- >
+    {% if forloop.last %}
+    最后一条记录：{{ name }}
+    <!—-显示分隔线-->
+    <hr>
+    {% endif %}
+{% endfor %}
+
+{% with vlist.0 as firstname %}
+<!--#显示：第一个人员是：程序员 -->
+第一个人员是：{{ firstname }}
+{% endwith %}
+</body>
+</html>

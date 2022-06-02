@@ -1,3 +1,4 @@
+from django import template
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from test_view2.models import loguser, person
@@ -52,7 +53,7 @@ def add_person(request):
         # print(attachment)
         # 生成一条记录
         person.objects.create(name=name, email=email,
-                                           gender=gender, head_img=head_img, attachment=attachment)
+                              gender=gender, head_img=head_img, attachment=attachment)
         # 重定向
         return redirect('/test_view2/index/')
     return render(request, 'test_view2/add_person.html')
@@ -84,8 +85,55 @@ def edit_person(request, personid):
     return render(request, 'test_view2/edit_person.html', {'person': person_obj})
 
 
-def del_person(request,personid):
-    person_obj=person.objects.get(id=personid)
+def del_person(request, personid):
+    person_obj = person.objects.get(id=personid)
     # 删除记录对象
     person_obj.delete()
     return redirect('/test_view2/index/')
+
+
+# 在视图函数中列举各种类型的变量，主要演示它们作为模板变量时在模板文件中显示的形式
+def template_test(request):
+    # 列表变量
+    v_list = ['程序员', '产品经理', '产品销售', '架构师']
+    # 字典变量，注意：key名字一定包含在引号中
+    v_dic = {"name": "张三", "age": 16, "love": "编程"}
+
+    # 定义一个类，这个类有属性name、language和hair
+    # 这个类还有一个方法hope()
+    class coder(object):
+        # 类的初始化方法，为3个属性赋值
+        def __init__(self, name, language, hair):
+            self.name = name
+            self.language = language
+            self.hair = hair
+
+        # 类的方法，定义函数hope()
+        def hope(self):
+            return '{}的希望是程序少出bug，工作少加班！'.format(self.name)
+
+    # 实例化类，生成类对象
+    zhang = coder('张三', 'python', '多')
+    # 实例化类，生成类对象
+    li = coder('李四', 'php', '不多不少')
+    # 实例化类，生成类对象
+    wang = coder('王五', 'c#', '少')
+    # 建立列表变量coders，把类对象作为列表中的元素
+    coders = [zhang, li, wang]
+    # 向HTML文件传参数，传递不同类型的变量
+    return render(request, 'test_view2/test_template.html', {'v_list': v_list, 'v_dic':
+        v_dic, 'coders': coders})
+
+
+# 自定义模版
+def test_filter(request):
+    vhair = "fewhair"
+    num = 4
+    age = 80
+    user_list = [{"name": "lingming", "age": 18}, {"name": "Tom", "age": 15}, {"name": "John", "age": 17}, {"name": "wangwu", "age": 19}]
+    return render(request, 'test_view2/test_filter.html', {"hair": vhair, "num": num, "age": age, "user_list": user_list})
+
+def test_for(request):
+    # 定义列表变量
+    v_list = ['程序员', '产品经理', '产品销售', '架构师', '老板','员工']
+    return render(request, 'test_view2/test_for.html', {'vlist': v_list})
