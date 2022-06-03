@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'employee.apps.EmployeeConfig',
     'test_view.apps.TestViewConfig',
     'test_view2.apps.TestView2Config',
+    'test_form.apps.TestFormConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -127,6 +129,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 访问上传资源media路径
-# MEDIA_URL = "/media/"
+MEDIA_URL = "/media/"
 # 存储上传资源的路径
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")

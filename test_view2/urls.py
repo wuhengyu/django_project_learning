@@ -25,6 +25,8 @@ urlpatterns = [
     path('test_filter/', test_filter),
     path('test_for/', test_for),
 
+    path('test_form/', testform),
+
 
 
 ]

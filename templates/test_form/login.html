@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个<meta>标签必须放在最前面，任何其他内容都必须跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>登录页面</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css'%}">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'signin.css' %}" rel="stylesheet">
+</head>
+<body>
+{#<div align="center">#}
+{#<h1>测试Django Form</h1>#}
+{#<hr>#}
+{#<form action="/test_form/" method="post">#}
+{#{% csrf_token %}#}
+{#<!--　以<p>标签的形式显示表单字段　-->#}
+{#{{ testform.as_p }}#}
+{#<div><input type="submit" value="登录"></div>#}
+{#</form>#}
+{#</div>#}
+
+
+<div class="container">
+<!--　 设置<form>标签的action和method属性，其他都用Boostrap样例源代码 -->
+<form action='/test_form/login/' method='post' class="form-signin">
+{% csrf_token %}
+<h2 class="form-signin-heading">请登录</h2>
+<label for="{{ form_obj.account.id_for_label }}" class="sr-only">{{ form_obj.account.label }}</label>
+{{ form_obj.account }}
+<br>
+<label for="{{ form_obj.pwd.id_for_label }}" class="sr-only">{{ form_obj.pwd.label }}</label>
+{{ form_obj.pwd }}
+<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+</form>
+</div>
+<!-- /container -->
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+</body>
+</html>

@@ -21,4 +21,5 @@ urlpatterns = [
     path('test_orm_old/', include('employee.urls')),
     path('test_view/', include('test_view.urls')),
     path('test_view2/', include('test_view2.urls')),
+    path('test_form/', include('test_form.urls')),
 ]

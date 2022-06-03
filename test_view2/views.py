@@ -130,10 +130,39 @@ def test_filter(request):
     vhair = "fewhair"
     num = 4
     age = 80
-    user_list = [{"name": "lingming", "age": 18}, {"name": "Tom", "age": 15}, {"name": "John", "age": 17}, {"name": "wangwu", "age": 19}]
-    return render(request, 'test_view2/test_filter.html', {"hair": vhair, "num": num, "age": age, "user_list": user_list})
+    user_list = [{"name": "lingming", "age": 18}, {"name": "Tom", "age": 15}, {"name": "John", "age": 17},
+                 {"name": "wangwu", "age": 19}]
+    return render(request, 'test_view2/test_filter.html',
+                  {"hair": vhair, "num": num, "age": age, "user_list": user_list})
+
 
 def test_for(request):
     # 定义列表变量
-    v_list = ['程序员', '产品经理', '产品销售', '架构师', '老板','员工']
+    v_list = ['程序员', '产品经理', '产品销售', '架构师', '老板', '员工']
     return render(request, 'test_view2/test_for.html', {'vlist': v_list})
+
+
+# 从当前目录导入forms文件
+from . import forms
+
+
+def testform(request):
+    if request.method == "POST":
+        # 通过request.POST为test_form对象赋值
+        test_form = forms.test_form(request.POST)
+        # 表单校验功能
+        if test_form.is_valid():
+            # 校验通过的数据存放在cleaned_data中，cleaned_data是字典类型的
+            # 因此要用get()函数取值
+            account = test_form.cleaned_data.get("account")
+            pw = test_form.cleaned_data.get("password")
+            if (account == 'test' and pw == '123'):
+                return HttpResponse("登录成功")
+            else:
+                return HttpResponse("用户名或密码错误")
+        else:
+            return HttpResponse("数据输入不合法")
+    # 初始化生成一个test_form对象
+    test_form = forms.test_form()
+    # 通过render()把testform表单对象传递给test_form
+    return render(request, 'test_view2/test_form.html', {'testform': test_form})
