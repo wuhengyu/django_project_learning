@@ -9,7 +9,9 @@
 {% load test_filter %}
 <!-- 模板变量是hair，过滤器是coderstatus，参数是"王老五" -->
 <!-- 将显示：王老五是资深程序员 -->
+<h1>{{ hair }}</h1>
 <h1>{{ hair|coderstatus:"王老五" }}</h1>
+<h1>{{ hair2|coderstatus2:"王老五2" }}</h1>
 
 {% if num > 8 %}
     <h1>num数值大于8</h1>

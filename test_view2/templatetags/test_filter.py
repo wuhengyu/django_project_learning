@@ -7,9 +7,9 @@
 
 
 # 自定义过滤器
-# 取出注册库，固定写法
 from django import template
 
+# 取出注册库，固定写法
 register = template.Library()
 
 
@@ -25,3 +25,13 @@ def coder_status(value, arg):
     if value == 'fewhair':
         return "{}是资深程序员".format(arg)
 
+
+@register.filter(name='coderstatus2')
+def coder_status2(value, arg):
+    if value == 'morehair':
+        # return "{}是菜鸟程序员2".format(arg)
+        return "%s是菜鸟程序员2" % arg
+    if value == "middlehair":
+        return "{}是工程师级程序员2".format(arg)
+    if value == 'fewhair':
+        return "{}是资深程序员2".format(arg)

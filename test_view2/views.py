@@ -128,12 +128,13 @@ def template_test(request):
 # 自定义模版
 def test_filter(request):
     vhair = "fewhair"
+    vhair2 = "middlehair"
     num = 4
     age = 80
     user_list = [{"name": "lingming", "age": 18}, {"name": "Tom", "age": 15}, {"name": "John", "age": 17},
                  {"name": "wangwu", "age": 19}]
     return render(request, 'test_view2/test_filter.html',
-                  {"hair": vhair, "num": num, "age": age, "user_list": user_list})
+                  {"hair": vhair, "num": num, "age": age, "user_list": user_list, "hair2": vhair2})
 
 
 def test_for(request):
@@ -141,6 +142,13 @@ def test_for(request):
     v_list = ['程序员', '产品经理', '产品销售', '架构师', '老板', '员工']
     return render(request, 'test_view2/test_for.html', {'vlist': v_list})
 
+
+def test_tag(request):
+    return render(request, 'test_view2/test_tag.html')
+
+
+def test_inclusion_tag(request):
+    return render(request, 'test_view2/test_inclusion_tag.html')
 
 # 从当前目录导入forms文件
 from . import forms

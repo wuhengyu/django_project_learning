@@ -23,7 +23,9 @@ urlpatterns = [
     # 模版变量
     path('template_test/', template_test),
     path('test_filter/', test_filter),
-    path('test_for/', test_for),
+    path('test_filter/', test_filter),
+    path('test_tag/', test_tag),
+    path('test_inclusion_tag/', test_inclusion_tag),
 
     path('test_form/', testform),
 

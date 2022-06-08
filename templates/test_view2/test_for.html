@@ -21,7 +21,7 @@
     反向计数：{{ forloop.revcounter }}--{{ name }}
     <!—-显示分隔线-->
     <hr>
-    <!--#判断循环的最后一条记录-- >
+    <!--#判断循环的最后一条记录-->
     {% if forloop.last %}
     最后一条记录：{{ name }}
     <!—-显示分隔线-->
@@ -30,8 +30,25 @@
 {% endfor %}
 
 {% with vlist.0 as firstname %}
-<!--#显示：第一个人员是：程序员 -->
-第一个人员是：{{ firstname }}
+    <!--#显示：第一个人员是：程序员 -->
+    第一个人员是：{{ firstname }}
 {% endwith %}
+
+<h1>*****************************</h1>
+{% for name in vlist %}
+    <!-- 循环 -->
+    {{ name }}
+    <br>
+    <!-- 反向计数 -->
+    {{ forloop.revcounter }}--{{ name }}
+    <br>
+{% endfor %}
+
+<h1>*****************************</h1>
+{% for name in vlist %}
+    从0开始计数:{{ forloop.counter0 }}--{{ name }}
+    <br>
+{% endfor %}
+
 </body>
 </html>
