@@ -26,6 +26,12 @@ urlpatterns = [
     path('test_filter/', test_filter),
     path('test_tag/', test_tag),
     path('test_inclusion_tag/', test_inclusion_tag),
+    path('test_mom/', test_mom),
+    path('test_module/', test_module),
+    path('test_fontAwesome/', test_fontAwesome),
+    path('test_base/', test_base),
+    path('test_index/', test_index),
+
 
     path('test_form/', testform),
 

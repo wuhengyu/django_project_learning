@@ -44,4 +44,6 @@ urlpatterns = [
 
     path('test_values_list/', test_values_list),
     path('test_value/', test_value),
+
+    path('test_orm_old_index/', test_orm_old_index),
 ]

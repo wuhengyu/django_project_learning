@@ -6,26 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述4个<meta>标签必须放在最前面，任何其他内容都必须跟随其后！ -->
-    <title>母版样例</title>
+    <title>组件样例</title>
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="page-header">
-        <h1>这是母版标题
-            <small>--母版样例</small>
-        </h1>
+<div>
+    <div class="container">
+    <!--　在这个位置引入组件 //-->
+    {% include 'test_view2/nav.html' %}
     </div>
-    <!-- #代码块　// -->
-    {% block main %}
-    {% endblock %}
-    <div>
-        <h3>这是母版的底部
-            <small>--母版样例</small>
-        </h3>
-    </div>
+    <h1>这是一个组件</h1>
 </div>
 </body>
 </html>

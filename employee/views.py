@@ -178,7 +178,8 @@ def list_employee_old(request):
     emp = employee.objects.all()
     # 它是一个Django QuerySet对象集
     # 外键dep、多对多键group、一对一键info这些关联关系也包含在emp对象中，因为Django ORM会自动把关联关系也放在Query Set对象中
-    return render(request, 'test_orm_old/list_employee_old.html', {'emp_list': emp})
+    # return render(request, 'test_orm_old/list_employee_old.html', {'emp_list': emp})
+    return render(request, 'test_orm_old/bootstrapDemo/list_employee_old.html', {'emp_list': emp})
 
 
 def delete_employee_old(request, emp_id):
@@ -208,8 +209,11 @@ def add_employee_old(request):
     dep_list = department.objects.all()
     group_list = group.objects.all()
     info_list = employeeinfo.objects.all()
-    return render(request, 'test_orm_old/add_employee_old.html',
-                  {'dep_list': dep_list, 'group_list': group_list, 'info_list': info_list})
+    # return render(request, 'test_orm_old/add_employee_old.html',
+    #               {'dep_list': dep_list, 'group_list': group_list, 'info_list': info_list})
+
+    return render(request, 'test_orm_old/bootstrapDemo/add_employee_old.html',
+                      {'dep_list': dep_list, 'group_list': group_list, 'info_list': info_list})
 
 
 # views.py第九段代码
@@ -319,3 +323,7 @@ def test_values_list(request):
 def test_value(request):
     emp_m2m_2 = group.objects.values("group_name", "employee__name", "employee__email")
     print(emp_m2m_2)
+
+
+def test_orm_old_index(request):
+    return render(request, 'test_orm_old/bootstrapDemo/index.html')

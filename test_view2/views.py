@@ -150,6 +150,24 @@ def test_tag(request):
 def test_inclusion_tag(request):
     return render(request, 'test_view2/test_inclusion_tag.html')
 
+
+def test_mom(request):
+    return render(request, 'test_view2/inhert_base.html')
+
+def test_module(request):
+    return render(request, 'test_view2/module.html')
+
+
+def test_fontAwesome(request):
+    return render(request, 'test_view2/bootstrapDemo/fontAwesome.html')
+
+def test_base(request):
+    return render(request, 'test_view2/bootstrapDemo/base.html')
+
+def test_index(request):
+    return render(request, 'test_view2/bootstrapDemo/index.html')
+
+
 # 从当前目录导入forms文件
 from . import forms
 
