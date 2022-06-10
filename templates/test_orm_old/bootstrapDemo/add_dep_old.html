@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加部门</title>
+</head>
+<body>
+{% extends 'test_orm_old/bootstrapDemo/base.html' %}
+{% block page_content %}
+<div style="text-align: center;">
+    <h1 class="col-sm-20">增加部门</h1>
+<!--    设置<form>表单的method="post",当单击“保存”按钮时，向后端发送post请求-->
+    <form action="" method="post" >
+<!--        Django安全机制，防止CSRF-->
+        {% csrf_token %}
+        <input type="hidden" name="id" id="id" value="{{ department.id }}">
+        <div class="col-sm-20">
+<!--            <input标签>的name属性必须设置，后端通过name属性取值-->
+            <label>
+                <input type="text" name="dep_name" class="form-control" placeholder="部门">
+            </label>
+        </div>
+        <div class="col-sm-20">
+            <label>
+                <input type="text" name="dep_script" id="dep_script"  class="form-control" placeholder="备注">
+            </label>
+        </div>
+        <div class="col-sm-20">
+            <input type="submit" value="保存" class="btn btn-primary btn-lg" >
+        </div>
+    </form>
+<!--    错误信息显示在这里-->
+    {{ error_info }}
+</div>
+{% endblock %}
+</body>
+</html>

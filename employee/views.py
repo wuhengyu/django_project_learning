@@ -7,7 +7,8 @@ from .models import employee, department, group, employeeinfo
 def list_dep_old(request):
     # 取得数据库表全部记录
     dep_list = department.objects.all()
-    return render(request, 'test_orm_old/list_dep_old.html', {'dep_list': dep_list})
+    # return render(request, 'test_orm_old/list_dep_old.html', {'dep_list': dep_list})
+    return render(request, 'test_orm_old/bootstrapDemo/list_dep_old.html', {'dep_list': dep_list})
 
 
 # views.py第二段代码
@@ -17,7 +18,7 @@ def add_dep_old(request):
         dep_name = request.POST.get('dep_name')
         dep_script = request.POST.get('dep_script')
         if dep_name.strip() == '':
-            return render(request, 'test_orm_old/add_dep_old.html', {'error_info': '部门名称不能为空！'})
+            return render(request, 'test_orm_old/bootstrapDemo/add_dep_old.html', {'error_info': '部门名称不能为空！'})
         try:
             # 用create()函数新建一条记录，这条记录会自动保存，不用调用save()函数
             department.objects.create(dep_name=dep_name, dep_script=dep_script)
@@ -31,10 +32,11 @@ def add_dep_old(request):
             # obj.save()
             return redirect('/test_orm_old/list_dep_old/')
         except Exception as e:
-            return render(request, 'test_orm_old/add_dep_old.html', {'error_info': '输入部门名称重复或信息有错误！'})
+            return render(request, 'test_orm_old/bootstrapDemo/add_dep_old.html', {'error_info': '输入部门名称重复或信息有错误！'})
         finally:
             pass
-    return render(request, 'test_orm_old/add_dep_old.html')
+    # return render(request, 'test_orm_old/add_dep_old.html')
+    return render(request, 'test_orm_old/bootstrapDemo/add_dep_old.html')
 
 
 # views.py第三段代码
@@ -85,7 +87,7 @@ def add_group_old(request):
             return render(request, 'test_orm_old/add_group_old.html', {'error_info': '团体名称不能为空！'})
         try:
             group.objects.create(group_name=group_name, group_script=group_script)
-            return redirect('/test_orm_old/list_group_old/')
+            return redirect('/test_orm_old/list_dep_old.html/')
         except Exception as e:
             return render(request, 'test_orm_old/add_group_old.html', {'error_info': '输入团体名称重复或信息有错误！'})
         finally:
@@ -100,7 +102,7 @@ def del_group_old(request, group_id):
         group_object = group.objects.get(id=group_id)
         # 删除部门记录
         group_object.delete()
-        return redirect('/test_orm_old/list_group_old/')
+        return redirect('/test_orm_old/list_dep_old.html/')
     return render(request, 'test_orm_old/delete_group_old.html')
 
 
@@ -114,7 +116,7 @@ def edit_group_old(request, group_id):
         group_object.group_name = group_name
         group_object.group_script = group_script
         group_object.save()
-        return redirect('/test_orm_old/list_group_old/')
+        return redirect('/test_orm_old/list_dep_old.html/')
     else:
         group_object = group.objects.get(id=group_id)
     return render(request, 'test_orm_old/edit_group_old.html', {'group': group_object})
