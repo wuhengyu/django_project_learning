@@ -46,4 +46,9 @@ urlpatterns = [
     path('test_value/', test_value),
 
     path('test_orm_old_index/', test_orm_old_index),
+
+
+    # forms组件
+    path('test_form/', test_form),
+    path('userinfo/', userinfo),
 ]

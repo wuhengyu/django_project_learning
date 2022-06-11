@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
+
+from . import forms
 from .models import employee, department, group, employeeinfo
 
 
@@ -329,3 +331,34 @@ def test_value(request):
 
 def test_orm_old_index(request):
     return render(request, 'test_orm_old/bootstrapDemo/index.html')
+
+
+
+def test_form(request):
+    if request.method == "POST":
+        # 通过request.POST为test_form对象赋值
+        test_form = forms.test_form(request.POST)
+        # 表单校验功能
+        if test_form.is_valid():
+            # 校验通过的数据存放在cleaned_data中，cleaned_data是字典类型的
+            # 因此要用get()函数取值
+            account = test_form.cleaned_data.get("account")
+            pw = test_form.cleaned_data.get("password")
+            if (account == 'test' and pw == '123'):
+                return HttpResponse("登录成功")
+            else:
+                return HttpResponse("用户名或密码错误")
+        else:
+            return HttpResponse("数据输入不合法")
+    # 初始化生成一个test_form对象
+    test_form = forms.test_form()
+    # 通过render()把testform表单对象传递给test_form
+    return render(request, 'test_orm_old/employee_form/test_form.html', {'testform': test_form})
+
+
+def userinfo(request):
+    if request.method == "POST":
+        userinfo = forms.userinfo(request.POST)
+
+    userinfo = forms.userinfo()
+    return render(request, 'test_orm_old/employee_form/userinfo.html', {'userinfo': userinfo})

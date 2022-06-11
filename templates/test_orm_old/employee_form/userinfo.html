@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<bod{% extends 'test_orm_old/bootstrapDemo/base.html' %}
+{% block page_content %}
+<div style="text-align: center;">
+    <h1>测试Django Form</h1>
+    <hr>
+    <form action="/userinfo/" method="post">
+        {% csrf_token %}
+        <!-- 以<p>标签的形式显示表单的每一个字段 -->
+        {{ userinfo.as_p }}
+        <div><input type="submit" value="登录"></div>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>
