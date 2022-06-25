@@ -10,7 +10,7 @@
 <div style="text-align: center;">
     <h1>测试Django Form</h1>
     <hr>
-    <form action="/test_form/" method="post">
+    <form action="/test_orm_old/test_form/" method="post">
         {% csrf_token %}
         <!-- 以<p>标签的形式显示表单的每一个字段 -->
         {{ testform.as_p }}

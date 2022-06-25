@@ -131,4 +131,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # 访问上传资源media路径
 MEDIA_URL = "/media/"
 # 存储上传资源的路径
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+# MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "test_form/media")

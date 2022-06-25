@@ -28,3 +28,8 @@ def login(request):
     form_obj = forms.login_form()
     # 把Form对象传到页面文件
     return render(request, 'test_form/login.html', {'form_obj': form_obj})
+
+
+def list_loguser(request):
+    users = models.loguser.objects.all()
+    return render(request, 'test_form/list_loguser.html', {'usr_list': users})
