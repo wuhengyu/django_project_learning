@@ -16,7 +16,7 @@ def login(request):
             user_obj = models.loguser.objects.filter(account=account, password=pwd).first()
             if user_obj:
                 # 登录成功进入账号列表页面（list_loguser）
-                return redirect('/list_loguser/')
+                return redirect('/test_form/list_loguser/')
             else:
                 # 用户或密码不对，把错误信息和Form对象传给login.html页面
                 error = '用户不存在或密码错误！'

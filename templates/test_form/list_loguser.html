@@ -11,7 +11,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="icon" href="{% static 'favicon.ico'　%}" 　>
     <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css'%}">
 </head>
 <body>
 <div class="container">
@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-3 pull-right" style="margin-bottom:15px ">
                             <!--给“增加”按钮加Bootstrap样式、Font Awesome图标 //-->
-                            <div><a href="/add_loguser/" class="btn btn-primary pull-right"><i
+                            <div><a href="/test_form/add_loguser/" class="btn btn-primary pull-right"><i
                                     class="fa fa-user-plus fa-fw"></i>&nbsp;增加</a>
                             </div>
                         </div>
@@ -77,11 +77,11 @@
                                 很少
                                 {% endif %}
                             </td>
-                            <td><a href="/del_loguser/{{ usr.id }}/" class="btn btn-danger"><i
+                            <td><a href="/test_form/del_loguser/{{ usr.id }}/" class="btn btn-danger"><i
                                     class="fa fa-trash-o fa-fw"
                                     aria-hidden="true"></i>&nbsp;删除</a>
                             </td>
-                            <td><a href="/edit_loguser/{{ usr.id }}/" class="btn btn-info"><i
+                            <td><a href="/test_form/edit_loguser/{{ usr.id }}/" class="btn btn-info"><i
                                     class="fa fa-pencil-square-o"
                                     aria-hidden="true"></i>&nbsp;修改</a>
                             </td>
@@ -98,7 +98,7 @@
         </div>
     </div>
 </div>
-<script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
 </body>
 </html>
