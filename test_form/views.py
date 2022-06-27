@@ -87,14 +87,20 @@ def edit_loguser(request, loguser_id):
                 return render(request, 'test_form/edit_loguser.html', {'formobj': form_obj, 'img': imgname})
         else:
             return render(request, 'test_form/add_loguser.html', {'formobj': form_obj})
-            # 请求方式不是POST，执行以下代码
-            # 取得的值，以字典集合的形式存在obj_list中
-            obj_list = models.loguser.objects.filter(id=loguser_id).values('id', 'account', 'password', 'email',
-                                                                           'gender', 'hobby', 'hair', 'img')
-            # 取出第一个字典
-            dic = obj_list[0]
-            # imgname保存img字段的值
-            imgname = dic['img']
+    # 请求方式不是POST，执行以下代码
+    # 取得的值，以字典集合的形式存在obj_list中
+    obj_list = models.loguser.objects.filter(id=loguser_id).values('id', 'account', 'password', 'email',
+                                                                   'gender', 'hobby', 'hair', 'img')
+    # 取出第一个字典
+    dic = obj_list[0]
+    # imgname保存img字段的值
+    imgname = dic['img']
     # 用字典值给loguser_form对象赋值
     form_obj = forms.loguser_form(initial=dic)
     return render(request, 'test_form/edit_loguser.html', {'formobj': form_obj, 'img': imgname})
+
+
+def del_loguser(request, loguser_id):
+    obj=models.loguser.objects.get(id=loguser_id)
+    obj.delete()
+    return redirect('/test_form/list_loguser/')

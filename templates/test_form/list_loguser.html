@@ -16,8 +16,8 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <div class="page-header">
+        <div class="col-md-offset-0 col-md-12">
+            <div class="page-header" align="center">
                 <h1> 样例首页<small>--账号信息列表</small></h1>
             </div>
             <div class="panel panel-primary">
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-bordered table-condensed table-striped table-hover">
+                    <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
                         <!--给表格增加Bootstrap样式 //-->
                         <thead>
                         <tr>
@@ -44,6 +44,7 @@
                             <th>性别</th>
                             <th>爱好</th>
                             <th>头发数量</th>
+                            <th>头像</th>
                             <th colspan="2">操作</th>
                         </tr>
                         </thead>
@@ -77,6 +78,7 @@
                                 很少
                                 {% endif %}
                             </td>
+                            <td>{{ usr.img }}</td>
                             <td><a href="/test_form/del_loguser/{{ usr.id }}/" class="btn btn-danger"><i
                                     class="fa fa-trash-o fa-fw"
                                     aria-hidden="true"></i>&nbsp;删除</a>
