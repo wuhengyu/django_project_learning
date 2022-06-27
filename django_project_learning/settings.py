@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'test_view.apps.TestViewConfig',
     'test_view2.apps.TestView2Config',
     'test_form.apps.TestFormConfig',
+    'book.apps.BookConfig'
 
 ]
 
