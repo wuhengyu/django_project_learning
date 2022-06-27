@@ -22,7 +22,7 @@ class test_form(forms.Form):
         label="账号",
         # 设置初始值
         initial="admin初始值",
-        # 是否可以为空
+        # 是否可以为空, 必填
         required=True,
         # 设置错误信息
         error_messages={

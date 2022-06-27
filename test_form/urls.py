@@ -15,6 +15,8 @@ from test_form.views import *
 urlpatterns = [
     path('login/', login),
     path('list_loguser/', list_loguser),
+    path('add_loguser/', add_loguser),
+path('edit_loguser/<int:loguser_id>/', edit_loguser),
 
 # 用静态服务函数static()指定上传文件URL
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
