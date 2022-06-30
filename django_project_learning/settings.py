@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'test_view.apps.TestViewConfig',
     'test_view2.apps.TestView2Config',
     'test_form.apps.TestFormConfig',
-    'book.apps.BookConfig'
+    'book.apps.BookConfig',
 
 ]
 
@@ -133,4 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 # 存储上传资源的路径
 # MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "test_form/media")
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, "book/media")

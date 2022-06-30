@@ -11,7 +11,6 @@ class book(models.Model):
     # 多对多键
     author = models.ManyToManyField(to='author', verbose_name='作者')
 
-
     class Meta:
         verbose_name = '图书信息'
         verbose_name_plural = '图书信息'
@@ -25,13 +24,12 @@ class publishing(models.Model):
     address = models.CharField(max_length=20, verbose_name='出版社地址')
 
     class Meta:
-
         verbose_name = '出版社信息'
         verbose_name_plural = '出版社书信息'
 
-
     def __str__(self):
         return '社名：' + self.name
+
 
 class author(models.Model):
     name = models.CharField(max_length=10, verbose_name='姓名')
@@ -39,11 +37,9 @@ class author(models.Model):
     birthday = models.DateField(verbose_name='出生日期')
     header = models.ImageField(verbose_name='作者头像')
 
-
     class Meta:
         verbose_name = '作者基本情况'
         verbose_name_plural = '作者基本情况'
-
 
     def __str__(self):
         return '作者：' + self.name
