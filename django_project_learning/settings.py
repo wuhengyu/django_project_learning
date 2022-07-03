@@ -109,9 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -134,6 +135,6 @@ MEDIA_URL = "/media/"
 # 存储上传资源的路径
 # MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "test_form/media")
+# MEDIA_ROOT = os.path.join(BASE_DIR, "test_form/media")
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, "book/media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "book/media")

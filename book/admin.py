@@ -1,9 +1,8 @@
 from django.contrib import admin
-
-# Register your models here.
 from . import models
 
 
+# admin.py第一段代码
 class bookadmin(admin.ModelAdmin):
     # 用出版日期作为导航查询字段
     date_hierarchy = 'publishdate'
@@ -14,10 +13,11 @@ class bookadmin(admin.ModelAdmin):
     # 以下代码在页面上对字段进行分组显示或布局
     fieldsets = (
         (
-            '图书信息',
+            '图书信息section',
             {'fields': (('title', 'publishdate'), 'publishing', 'author')}),
         (
-            '图书简介',
+            # 隐藏收起
+            '图书简介section',
             {'classes': ('collapse',), 'fields': ('descript',)}),)
 
     # 自定义一个字段
@@ -26,17 +26,25 @@ class bookadmin(admin.ModelAdmin):
         return obj.descript[:20]
 
     # 设置自定义字段名字
-    descript_str.short_description = '简介'
+    descript_str.short_description = '自定义字段简介'
+    # descript = '简介'
     # 设置过滤导航字段
     list_filter = ('title', 'publishing', 'author')
     # 设置查询的字段
     search_fields = ('title', 'publishing__name', 'author__name')
     # 列表显示字段
+    # list_display = ('title', 'descript', 'publishdate', 'publishing',)
     list_display = ('title', 'descript_str', 'publishdate', 'publishing',)
+    # 链接修改页面的字段
+    # list_display_links = ('title', 'descript_str')
+    list_display_links = None
     # 显示查询到的记录数
     show_full_result_count = True
     # 设定每页显示6条记录
-    list_per_page = 6
+    list_per_page = 5
+    # 在列表页面中可以被编辑的字段
+    list_editable = ['publishdate']
+
 
 
 admin.site.register(models.book, bookadmin)

@@ -16,6 +16,7 @@ class book(models.Model):
         verbose_name_plural = '图书信息'
 
     def __str__(self):
+        # 如果不设置这个属性list_display，内容是每个数据模型对象的__str__()函数的返回值
         return self.title + '--相关图书信息'
 
 
