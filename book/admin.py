@@ -46,6 +46,16 @@ class bookadmin(admin.ModelAdmin):
     list_editable = ['publishdate']
 
 
+    # 定义批处理方法
+    def change_publishing(self, request, queryset):
+        publishing_obj = models.publishing.objects.get(name='新生活出版社')
+        rows = queryset.update(publishing=publishing_obj)
+        self.message_user(request, '%s 条记录被修改成“新生活出版社”' % rows)
+
+    change_publishing.short_description = '选中记录的出版社改为“新生活出版社”'
+    # 把方法名加到actions中
+    actions = ['change_publishing']
+
 
 admin.site.register(models.book, bookadmin)
 
